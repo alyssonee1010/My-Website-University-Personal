@@ -4,6 +4,7 @@
   	<meta charset="utf-8">
     <title> Meine Beispiel seite </title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -21,48 +22,54 @@
     </table>
     <div class="form-container">
       <h1 style="justify-self: center; font-size: xx-large;"> Survey Form </h1>
-      <form class="">
-        <label for="name">* Name:</label> 
-        <input type="text" id="name" name="name"><br>
-        <label for="email">* Email:</label> 
-        <input type="text" id="email" name="email"><br>
-        <label for="age">* Age:</label> 
-        <input type="text" id="age" name="age"><br>
-        <label for="role">Which options best describes your current role?</label> 
-        <select name="role" id="role">
-          <option value="student">Student</option>
+      <form class="form">
+        <fieldset class="intro"><legend>Let us know how we can improve freeCodeCamp</legend></fieldset>
+        <label for="name">* Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+
+        <label for="email">* Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your Email">
+
+        <label for="age">* Age:</label>
+        <input type="text" id="age" name="age" placeholder="Age">
+
+        <label for="role">Which option best describes your current role?</label>
+        <select name="role" id="role" required>
+          <option value="student" selected>Student</option>
           <option value="professor">Professor</option>
           <option value="worker">Worker</option>
           <option value="dancer">Dancer</option>
-        </select><br>
+        </select>
 
-        <label for="recommend">How likely is that you would recommend freeCodeCamp to a friend?</label> 
-        <input type="radio" id="def" name="recommend" value="def">
-        <label for="def">Definetly</label><br>
-        <input type="radio" id="maybe" name="recommend" value="maybe">
-        <label for="maybe">Maybe</label><br>
-        <input type="radio" id="not_sure" name="recommend" value="not_sure">
-        <label for="not_sure">Not sure</label>
+        <fieldset>
+          <legend>How likely is that you would recommend freeCodeCamp to a friend?</legend>
+          <div class="choices">
+            <label><input type="radio" id="def"   name="recommend" value="def"> Definitely</label>
+            <label><input type="radio" id="maybe" name="recommend" value="maybe"> Maybe</label>
+            <label><input type="radio" id="not_sure" name="recommend" value="not_sure" checked> Not sure</label>
+          </div>
+        </fieldset>
 
-        <label for="like">What do you like most in FCC?</label> 
-        <select name="like" id="like">
-          <option value="" disabled selected>Select an option</option>
-          <option value="Nothing">Nothing</option>
-          <option value="something">something</option>
-          <option value="tchja">Tchja</option>
-        </select><br>
-
-        <label for="improvements">How likely is that you would recommend freeCodeCamp to a friend?</label> 
-        <input type="checkbox" id="front" name="front" value="front-end" checked><br>
-        <label for="front">Front-end Projects</label>
-        <input type="checkbox" id="back" name="back" value="back-end" checked> <br>
-        <label for="back">Back-end Projects</label>
-        <input type="checkbox" id="data" name="data" value="data-visualization"><br>
-        <label for="data">Data Visualization </label>
-      </form>
+        <fieldset>
+          <legend>What do you like most in FCC?</legend>
+          <select name="like" id="like" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="Nothing">Nothing</option>
+            <option value="something">Something</option>
+            <option value="tchja">Tchja</option>
+          </select>
+        </fieldset>
+        <fieldset>
+        <legend>Things that should be improved in the future (Check all that apply):</legend>
+        <div class="choices">
+          <label><input type="checkbox" id="front" name="front" value="front-end" checked> Front-end Projects</label>
+          <label><input type="checkbox" id="back"  name="back"  value="back-end"  checked> Back-end Projects</label>
+          <label><input type="checkbox" id="data"  name="data"  value="data-visualization"> Data Visualization</label>
+        </div>
+      </fieldset>
+    </form>
     </div>
     <hr>
-    
     <table border="1" cellspacing="1" width="100%">
       <tr>
         <!-- Hauptinhalt -->
