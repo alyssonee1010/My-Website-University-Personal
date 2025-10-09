@@ -38,3 +38,22 @@
 #toggleImage:not(:checked) ~ .image_thingy img {
         opacity: 0;
       }
+
+.form-container {
+    font: "Roboto";
+    background-color: #a9d7d1;
+    justify-self: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+}
+.form {
+    display: grid;
+    background-color: snow;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+}
