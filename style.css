@@ -1,0 +1,40 @@
+
+.section {
+    background-color: lightgray;
+}
+.section_title {
+    padding: 1em;
+    transition: opacity 0.3s ease;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+.section_title::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: white;
+  opacity: 0.6;
+  filter: blur(3px);
+  z-index: -1;
+}
+.image_thingy {
+    display: block;
+    width: calc(100% - 20px);;
+    border: 1px solid black;
+    margin: 0.3rem;
+    padding: 0.3em;
+}
+
+.image {
+        display: block;           /* removes inline gaps below the image */
+        width: 100%; /* fills browser width minus margin (20px each side) */
+      }
+
+#toggleImage:not(:checked) ~ .image_thingy img {
+        opacity: 0;
+      }
