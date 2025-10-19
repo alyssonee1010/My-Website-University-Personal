@@ -1,0 +1,39 @@
+.header {
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.356);
+    padding: 10px;
+    border-bottom: 0.1rem solid black;
+    z-index: 3;
+}
+.main {
+  background-color: #3a3c399c;
+  display: flex;
+  flex-direction: row;  
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.table_container {
+  flex: 1;
+  align-self: stretch;
+  background-color: #e905ad94;
+}
+.sections_container {
+  align-self: stretch;
+  background-color: #0590e094;
+}
+.navbar {
+    top: 60px;
+    align-self: stretch;
+    background-color: rgba(0, 128, 0, 0.429);
+}
+.content_container {
+  display: flex;
+  flex-direction: row;
+}
+@media all and (max-width: 800px) {
+  .content_container { flex-direction: column; }
+}
+
+@media all and (max-width: 500px) {
+  .main { flex-direction: column; }
+}
