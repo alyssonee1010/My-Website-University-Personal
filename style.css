@@ -38,3 +38,75 @@
 #toggleImage:not(:checked) ~ .image_thingy img {
         opacity: 0;
       }
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.form-container {
+    font: "Roboto";
+    background-color: #a9d7d1;
+    justify-self: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+}
+.form {
+    background:snow;
+    border:1px solid #d9d9d9;
+    border-radius:14px;
+    padding:22px;
+    max-width:760px;
+    margin:0 auto;
+    margin-top: 1rem;
+    display:grid;
+    grid-template-columns: 1fr 260px;
+    gap:14px 16px;
+    align-items:center;
+}
+
+.form fieldset.intro{ display:contents; }
+.form fieldset.intro > legend{
+  grid-column:1 / -1; text-align:center; margin:0 0 10px; font-weight:500;
+}
+
+label {
+    font-weight:500;
+}
+.form { display:grid; grid-template-columns:1fr 260px; gap:14px 16px; align-items:center; }
+
+.form fieldset{ border:0; padding:0; margin:0 0 12px; display:contents; }
+.form legend{ grid-column:1; text-align:right; font-weight:500; margin:0 0 6px; align-self:start; }
+
+.form-container{ font-family: Roboto, Arial, sans-serif; }
+
+.form fieldset.fullrow > legend{
+  grid-column:1 / -1; 
+  text-align:center;
+  margin:6px 0 6px;
+}
+.form .choices{ grid-column:2; display:grid; gap:8px; }
+.form .choices label{ display:flex; align-items:center; gap:8px; }
+
+.form-container{ font-family: Roboto, Arial, sans-serif; }
+
+.form{
+  grid-template-columns: 340px 260px;
+  column-gap: 12px;
+}
+.form > label{
+  grid-column: 1;
+  text-align: right;
+  align-self: center;
+}
+.form input[type="text"],
+.form input[type="email"],
+.form select{
+  grid-column: 2;
+  width: 100%;
+}
