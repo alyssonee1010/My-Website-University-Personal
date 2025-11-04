@@ -1,17 +1,49 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css" /> <!-- Or styleFlex.css -->
-        <title> Rednerliste</title>
-    </head>
-    <body>
-        <h1> Rednerliste </h1>
-        Neuer Redner: 
-        <input> </input>
-        <button> Hinzufügen </button>
-        <ul id="list"></ul>
-    </body>
-    <script src="index.js"></script>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TopSort Web-App</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Roboto, "Segoe UI", Arial; padding: 1rem; max-width:900px; }
+    label,input,button { font: inherit; }
+    .row { display:flex; gap:.5rem; align-items:center; margin:.25rem 0; }
+    input { padding:.35rem .5rem; border:1px solid #ccc; border-radius:6px; min-width:6rem; }
+    button { padding:.35rem .6rem; border-radius:6px; border:1px solid #888; background:#f4f4f4; cursor:pointer; }
+    ul { margin:0.5rem 0 0 1.25rem; }
+    .small { font-size:.9rem; color:#666; }
+    .bad { color:crimson; }
+    .good { color:green; }
+    .controls { margin-top:.75rem; display:flex; gap:.5rem; align-items:center; }
+    .relation-list { margin-top:.5rem; border-top:1px dashed #ddd; padding-top:.5rem; }
+    .remove { background: #fee; border-color:#f99; }
+  </style>
+</head>
+<body>
+  <h1>TopSort (Vorrang-Relationen)</h1>
+
+  <div>
+    <div class="row">
+      <input id="a" placeholder="Vorrang-vor (z.B. A)" />
+      <span>→</span>
+      <input id="b" placeholder="Vorrang-nach (z.B. B)" />
+      <button id="add">Hinzufügen</button>
+      <button id="clear">Alle löschen</button>
+    </div>
+    <div class="small">Geben Sie Paaren der Form <code>[before, after]</code> ein. Enter im zweiten Feld fügt hinzu.</div>
+
+    <div class="relation-list" id="relationsWrap">
+      <strong>Aktuelle Relationen:</strong>
+      <ul id="relations"></ul>
+    </div>
+
+    <div class="controls">
+      <button id="run">Topologische Sortierung</button>
+      <div id="out" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script src="script.js">
+  </script>
+</body>
 </html>
