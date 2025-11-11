@@ -66,6 +66,14 @@ extraInput2.addEventListener('keydown', (e) => {
       return;
     }
 
+    if (opening === closing) {
+      toggleColorButton.innerText = `Opening and closing must be different. You entered "${opening}" for both — not allowed.`;
+      extraInput1.value = "";
+      extraInput2.value = "";
+      extraInput1.focus();
+      return;
+    }
+
     // Add new pair
     pairs[closing] = opening;
     toggleColorButton.innerText = `Added new pair: ${opening} → ${closing}`;
@@ -78,31 +86,49 @@ extraInput2.addEventListener('keydown', (e) => {
   }
 });
 
+function checkBalanced(text, pairs) {
+  const stack = [];
+  const openers = Object.values(pairs);
+  const closers = Object.keys(pairs);
+
+  // Go through the text scanning substrings
+  for (let i = 0; i < text.length; i++) {
+    // Check if any opener starts here
+    const opener = openers.find(o => text.startsWith(o, i));
+    if (opener) {
+      stack.push(opener);
+      i += opener.length - 1; // skip ahead
+      continue;
+    }
+
+    // Check if any closer starts here
+    const closer = closers.find(c => text.startsWith(c, i));
+    if (closer) {
+      const expectedOpener = pairs[closer];
+      const lastOpener = stack.pop();
+      if (lastOpener !== expectedOpener) {
+        return false;
+      }
+      i += closer.length - 1; // skip ahead
+    }
+  }
+
+  return stack.length === 0;
+}
+
+
 input.addEventListener('keydown', (e) => {
-    if (e.key === '{' || e.key === '}' || e.key === '(' || e.key === ')' || e.key === '[' || e.key === ']') {
-        input.value += e.key;
-        e.preventDefault();
-        stack.length = 0;
-        for (const char of input.value) {
-            if (Object.values(pairs).includes(char)) {
-                stack.push(char);
-            } else if (Object.keys(pairs).includes(char) && stack.length === 0) {
-                toggleColorButton.className = 'bad';
-                break;
-            } else if (Object.keys(pairs).includes(char)) {
-                if (stack.pop() !== pairs[char]) {
-                    toggleColorButton.className = 'bad';
-                    break
-                }
-            }
-            if (stack.length === 0) toggleColorButton.className = 'good';
-            else toggleColorButton.className = 'bad';
-        }
-    }
-    if (e.key === 'Enter') {
-        e.preventDefault();
-    }
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    return;
+  }
+  setTimeout(() => {
+    const text = input.value;
+    const result = checkBalanced(text, pairs);
+    toggleColorButton.className = result ? 'good' : 'bad';
+  }, 0);
 });
+
 
 function updatePairsDisplay() {
   pairsDisplay.innerHTML = "<h3>Current pairs:</h3><ul>" +
@@ -116,6 +142,11 @@ updatePairsDisplay();
 
 
 toggleColorButton.addEventListener('click', () => {
+    if (extraInput1.style.display === 'block' && extraInput2.style.display === 'block') {
+        extraInput1.style.display = 'none';
+        extraInput2.style.display = 'none';
+        return;
+    }
     extraInput1.style.display = 'block';
     extraInput2.style.display = 'block';
 });
