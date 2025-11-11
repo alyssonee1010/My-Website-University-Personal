@@ -6,42 +6,28 @@
   <title>TopSort Web-App</title>
   <style>
     body { font-family: system-ui, -apple-system, Roboto, "Segoe UI", Arial; padding: 1rem; max-width:900px; }
-    label,input,button { font: inherit; }
-    .row { display:flex; gap:.5rem; align-items:center; margin:.25rem 0; }
-    input { padding:.35rem .5rem; border:1px solid #ccc; border-radius:6px; min-width:6rem; }
-    button { padding:.35rem .6rem; border-radius:6px; border:1px solid #888; background:#f4f4f4; cursor:pointer; }
-    ul { margin:0.5rem 0 0 1.25rem; }
-    .small { font-size:.9rem; color:#666; }
-    .bad { color:crimson; }
-    .good { color:green; }
-    .controls { margin-top:.75rem; display:flex; gap:.5rem; align-items:center; }
-    .relation-list { margin-top:.5rem; border-top:1px dashed #ddd; padding-top:.5rem; }
-    .remove { background: #fee; border-color:#f99; }
+    .bad { background-color:crimson; }
+    .good { background-color:green; }
+    #theonlytext { width: 100%; font-size: 1.2rem; padding: 0.5rem; }
+    .yetanothertext { display: none; width: 100%; font-size: 1.2rem; padding: 0.5rem; margin-bottom: 1rem; }
+    .controls { margin-top: 1rem; }
+    button { font-size: 1.1rem; padding: 0.5rem 1rem; }
+    
   </style>
 </head>
 <body>
-  <h1>TopSort (Vorrang-Relationen)</h1>
+  <h1>Write your text</h1>
 
   <div>
-    <div class="row">
-      <input id="a" placeholder="Vorrang-vor (z.B. A)" />
-      <span>→</span>
-      <input id="b" placeholder="Vorrang-nach (z.B. B)" />
-      <button id="add">Hinzufügen</button>
-      <button id="clear">Alle löschen</button>
-    </div>
-    <div class="small">Geben Sie Paaren der Form <code>[before, after]</code> ein. Enter im zweiten Feld fügt hinzu.</div>
-
-    <div class="relation-list" id="relationsWrap">
-      <strong>Aktuelle Relationen:</strong>
-      <ul id="relations"></ul>
-    </div>
-
+    <input class="yetanothertext" id="extraInput1" placeholder="Just kidding, enter opening symbol (e.g. <)" />
+     <input class="yetanothertext" id="extraInput2" placeholder="Enter closing symbol (e.g. >)">
+    <input id="theonlytext" placeholder="Your text to be verified, with the parentheses thingy" />
     <div class="controls">
-      <button id="run">Topologische Sortierung</button>
+      <button id="theonlybutton"> I don't actually do anything, besides changing collor when everything looks good. </button>
       <div id="out" aria-live="polite"></div>
     </div>
   </div>
+  <div id="pairsDisplay"></div>
 
   <script src="script.js">
   </script>
